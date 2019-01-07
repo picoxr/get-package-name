@@ -2,7 +2,7 @@
 
 1.打开Unity，导入PicovrPackageManager_v2.6.0.unitypackage，打开AppList场景。
 
-2.新建Unity工程，把Demo中的Plugins->Android中的picovrpackagemanager_vxxx.jar包，拷贝到Unity工程对应的目录下。
+2.新建Unity工程，把assets中的中的picovrpackagemanager_vxxx.jar包，拷贝到Unity工程中Plugins->Android的目录下。
 
 3.修改主activity：android:name="com.picovr.picopackagemanager.PicoVRPackageList"
 ![](https://github.com/PicoSupport/PackageManager/blob/master/assets/01.png)
