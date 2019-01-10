@@ -2,7 +2,7 @@
 
 # How to use the PackageManager
 
-1. Open Unity, import picovrpackagemanager_v2.6.0.unitypackage, open AppList scene.
+1. Open Unity, import picovrpackagemanager_v2.7.6.unitypackage, open AppList scene.
 
 2. Create a new Unity project and copy the picovrpackagemanager_vxxx.jar in assets into the plugins-> Android directory of Unity project.
 
