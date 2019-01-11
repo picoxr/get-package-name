@@ -1,6 +1,8 @@
-[Call And Export Jar Package](https://github.com/PicoSupport/PicoSupport/blob/master/Call%20And%20Export%20Jar.docx)<p align="right"><a href="https://github.com/PicoSupport/PicoSupport" target="_blank"> <img src="https://github.com/PicoSupport/PicoSupport/blob/master/Assets/home.png" width="20"/> </a></p>
+<p align="right"><a href="https://github.com/PicoSupport/PicoSupport" target="_blank"> <img src="https://github.com/PicoSupport/PicoSupport/blob/master/Assets/home.png" width="20"/> </a></p>
 
 # How to use the PackageManager
+
+Note: Regarding java package creation and usege, please refer to [the Guideline](https://github.com/PicoSupport/PicoSupport/blob/master/Call%20And%20Export%20Jar.docx)
 
 1. Open Unity, import picovrpackagemanager_v2.7.6.unitypackage, open AppList scene.
 
