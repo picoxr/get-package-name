@@ -9,7 +9,9 @@ This demo shows how to get installed package names on device.
 android: name = "com. Picovr. Picopackagemanager. PicoVRPackageList"
 
 ## Interface
-  void getAllAppList()<br>
+```
+  String getAllAppList()
+  ```
   return format:
   AppInfo [mPackageName= package name, mActivityName= application activity, mAppName= application name, mInstallTime= installation time, mSystemFlag= system application 0 not 1 yes]
 
