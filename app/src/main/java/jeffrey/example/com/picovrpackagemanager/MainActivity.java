@@ -57,21 +57,21 @@ public class MainActivity extends AppCompatActivity {
         List<ResolveInfo> list = packageManager.queryIntentActivities(intent, 0);
         for (ResolveInfo resolveInfo : list) {
             AppInfo appInfo = new AppInfo();
-            appInfo.setPackageName(resolveInfo.activityInfo.packageName);//包名
-            appInfo.setActivityName(resolveInfo.activityInfo.name);//类名
-            appInfo.setAppName(resolveInfo.loadLabel(packageManager).toString());//名称
+            appInfo.setPackageName(resolveInfo.activityInfo.packageName);//package name
+            appInfo.setActivityName(resolveInfo.activityInfo.name);//class name
+            appInfo.setAppName(resolveInfo.loadLabel(packageManager).toString());//app name
             try {
                 PackageInfo packageInfo = packageManager.getPackageInfo(resolveInfo.activityInfo.packageName, 0);
-                appInfo.setInstallTime(packageInfo.firstInstallTime);//安装时间
+                appInfo.setInstallTime(packageInfo.firstInstallTime);//install time
                 if((packageInfo.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) <= 0){
-                    appInfo.setSystemFlag(0);//不是系统应用
+                    appInfo.setSystemFlag(0);//is not system app
                 }else{
-                    appInfo.setSystemFlag(1);//是系统应用
+                    appInfo.setSystemFlag(1);//is system app
                 }
                 ComponentName componentName = new ComponentName(
                         resolveInfo.activityInfo.packageName, resolveInfo.activityInfo.name);
 //                Drawable drawable = (Drawable) packageManager.getActivityIcon(componentName);
-//                appInfo.setIcon(drawable.getmip());//icon图标
+//                appInfo.setIcon(drawable.getmip());//icon
 //                drawable = null;
             } catch (PackageManager.NameNotFoundException e) {
                 // TODO Auto-generated catch block
