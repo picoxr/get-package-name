@@ -4,7 +4,9 @@ Note: Regarding JAR file creation and usage, please refer to [the Guideline](htt
 This demo shows how to get installed package names on device.
 
 ## Class Name
+```
 android: name = "com. Picovr. Picopackagemanager. PicoVRPackageList"
+```
 
 ## Interface
 ```
