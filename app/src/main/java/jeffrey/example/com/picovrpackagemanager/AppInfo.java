@@ -8,7 +8,7 @@ public class AppInfo {
     private String mActivityName;
     private String mAppName;
     private long mInstallTime;
-    private int mSystemFlag;// 是否是系统应用 0不是 1是
+    private int mSystemFlag;// whether its system app 0 not 1 yes
     private Bitmap mIcon;
 
     public String getPackageName() {
