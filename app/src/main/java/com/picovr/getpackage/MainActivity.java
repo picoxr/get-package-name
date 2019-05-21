@@ -1,4 +1,4 @@
-package jeffrey.example.com.picovrpackagemanager;
+package com.picovr.getpackage;
 
 import android.content.ComponentName;
 import android.content.Intent;
@@ -6,8 +6,13 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.drawable.AdaptiveIconDrawable;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.LayerDrawable;
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -46,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
             list += appInfo.toString();
         }
         textView1.setText(list);
-
     }
 
     public List<AppInfo> getAllAppList(){
@@ -68,11 +72,30 @@ public class MainActivity extends AppCompatActivity {
                 }else{
                     appInfo.setSystemFlag(1);//is system app
                 }
-                ComponentName componentName = new ComponentName(
-                        resolveInfo.activityInfo.packageName, resolveInfo.activityInfo.name);
-//                Drawable drawable = (Drawable) packageManager.getActivityIcon(componentName);
-//                appInfo.setIcon(drawable.getmip());//icon
-//                drawable = null;
+                //icon
+                if (Build.VERSION.SDK_INT < 26) {
+                    BitmapDrawable drawable = (BitmapDrawable) packageManager.getApplicationIcon(resolveInfo.activityInfo.packageName);
+                    appInfo.setIcon(drawable.getBitmap());
+                } else {
+                    Drawable drawable = packageManager.getApplicationIcon(resolveInfo.activityInfo.packageName);
+                    if (drawable instanceof BitmapDrawable) {
+                        appInfo.setIcon(((BitmapDrawable) drawable).getBitmap());
+                    } else if (drawable instanceof AdaptiveIconDrawable) {
+                        Drawable bgDrawable = ((AdaptiveIconDrawable) drawable).getBackground();
+                        Drawable fgDrawable = ((AdaptiveIconDrawable) drawable).getForeground();
+                        Drawable[] drs = new Drawable[2];
+                        drs[0] = bgDrawable;
+                        drs[1] = fgDrawable;
+                        LayerDrawable layerDrawable = new LayerDrawable(drs);
+                        int width = layerDrawable.getIntrinsicWidth();
+                        int height = layerDrawable.getIntrinsicHeight();
+                        Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+                        Canvas canvas = new Canvas(bitmap);
+                        layerDrawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
+                        layerDrawable.draw(canvas);
+                        appInfo.setIcon(bitmap);
+                    }
+                }
             } catch (PackageManager.NameNotFoundException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
@@ -86,9 +109,6 @@ public class MainActivity extends AppCompatActivity {
                 return long1.compareTo(long0);
             }
         });
-//		for(AppInfo appInfo : allAppsList){
-//			Log.i(TAG, appInfo.toString());
-//		}
         return allAppsList;
     }
 }

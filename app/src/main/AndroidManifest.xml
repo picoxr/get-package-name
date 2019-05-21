@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="jeffrey.example.com.picovrpackagemanager">
+    package="com.picovr.getpackage">
 
     <application
         android:allowBackup="true"

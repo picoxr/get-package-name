@@ -1,4 +1,4 @@
-package jeffrey.example.com.picovrpackagemanager;
+package com.picovr.getpackage;
 
 import android.graphics.Bitmap;
 
